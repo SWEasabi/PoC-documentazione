@@ -2,37 +2,53 @@
 
 \section{Introduzione}
 
-La pagina Angular mostra due differenti bottoni, uno di Fetch dello stato della API e un altro che modifica lo stato dell'entità\footnote{nel dominio del POC, la prima entità ID=1}, in questo bottone di modifica, il comportamento è quello di fetchare lo stato della lampada, per poi modificarlo nel suo complementare.
-Vengono dichiarati i componenti Angular "app" e "lamp-button", che inglobano rispettivamente i fogli di stile e Markup, oltre che i rispettivi file typescript "component.ts" e ".module.ts"\footnote{per il componente app}. 
-Vengono dichiarati i moduli "BrowserModule", essenziale per lanciare una app browser, e "HttpClientModule", essenziale per fare richieste HTTP, è così possibile implementare una GET, POST, DELETE oppure PUT.
-Nel Dominio del PoC si offrono, tramite il metodo toggleLamp(), l'implementazione di una PUT per cambiare lo stato della lampada, innestato in una GET, capace di richiedere lo stato corrente della lampada stessa.
+Lo scopo della pagina web prodotta in Angular, è quello di fornire le operazioni necessarie per attuare la modifica dello stato della lampada, sfruttando le funzionalità dell'API. \\
+Nell'ottica del PoC, la modifica è riservata alla lampada con \texttt{id = 1}. \\
+L'utente ha la capacità di visualizzare lo stato corrente della lampada, sia in forma visiva che testuale, e di modificarne lo stato. 
 
-\subsection{getData}
+\section{Funzionamento}
 
-Si offre il metodo getData, il quale attraverso una chiamata GET all'URL ritorna lo stato di tutte le lampade, quindi il loro id, il loro stato attuale\footnote{acceso = on, spento = off} e la loro locazione.
+\subsection{\texttt{lamp-button.component.ts}}
+Questo componente consiste di un pulsante che cambia lo stato di una lampada. Visualizza inoltre un'immagine della lampada (Figura \ref{fig:getlamps}), variabile in base allo stato, e il suo stato corrente in forma testuale.
 
-\subsection{toggleLamp}
+\subsection{All'avvio della pagina - \texttt{ngOnInit()}}
+All'avvio della pagina web, viene invocato il metodo \texttt{getStatus()}.\\
+Il metodo \texttt{getStatus()} è responsabile di ottenere lo stato corrente della lampada tramite una chiamata GET, ed aggiornare il valore locale nel BehaviorSubject \texttt{lampStatus\$} con il nuovo stato.
 
-Si offre il metodo toggleLamp(), tale metodo fa una chiamata "this.http.get<any>" su lamps/1, si aspetta una risposta di tipo JSON e porta tale risposta alla richiesta innestata "this.http.put<any>", la quale verifica lo stato del sotto campo dell'oggetto Response, Response.status, e lo cambia con il suo complementare\footnote{status: Response.status == 'on' ? 'off' : 'on'}.
+\subsection{\texttt{getStatus()}}
+Questo metodo recupera lo stato corrente della lampada attraverso una chiamata GET all'endpoint \footnote{L'endpoint è l'indirizzo della lampada, al quale ci si connette e si scambiano informazioni. In questo caso /lamps/1.}. \\
 
-Ritorna, alla fine della PUT, un Console.log con l'oggetto Response, che in questo momento temporale è pari al risultato della operazione\footnote{e' stato fatto l'update, se modifica portata a buon fine}.
+\subsection{Al tocco della lampada - \texttt{toggleLamp()}}
 
+Si offre il metodo \texttt{toggleLamp()}, tale metodo cambia lo stato della lampada tramite una chiamata PUT, da un valore locale "On", ad "Off", e viceversa.
+
+\section{Template HTML}
+Il template HTML mostra un'immagine della lampada ed il suo stato corrente. \\
+Tale immagine è anche un pulsante che chiama il metodo \texttt{toggleLamp()}, quando viene cliccata o premuta (Figura \ref{fig:modifylamps}).
+
+\section{Metodi di supporto}
+
+\subsection{\texttt{getData\$()}}
+Si offre il metodo \texttt{getData\$()}, il quale effettua una richiesta HTTP GET all'endpoint API, per recuperare lo stato corrente della lampada.
+
+\subsection{\texttt{toggleLamp\$()}}
+Questo metodo effettua una richiesta HTTP PUT all'endpoint API, per cambiare lo stato della lampada. \\
+Prende un parametro "status" che rappresenta lo stato corrente della lampada. \\
+Se lo stato è "On", invia una modifica del parametro in "Off" per spegnere la lampada, e viceversa.
+
+\section{Immagini}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{getlamps.jpg}
-    \caption{Button fa richiesta su /Lamps}
+    \includegraphics[width=0.5\linewidth]{getlamps.png}
+    \caption{Button fa richiesta di stato iniziale su /lamps/1}
+    \label{fig:getlamps}
 \end{figure}
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{modifylamps.jpg}
-    \caption{Button fa cambio di stato su /Lamps/1}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\linewidth]{modifylamps2.jpg}
-    \caption{Button fa cambio di stato su /Lamps/1}
+    \includegraphics[width=0.6\linewidth]{modifylamps.png}
+    \caption{Button fa cambio di stato su /lamps/1}
+    \label{fig:modifylamps}
 \end{figure}
