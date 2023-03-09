@@ -16,8 +16,7 @@ All'avvio della pagina web, viene invocato il metodo \texttt{getStatus()}.\\
 Il metodo \texttt{getStatus()} è responsabile di ottenere lo stato corrente della lampada tramite una chiamata GET, ed aggiornare il valore locale nel BehaviorSubject \texttt{lampStatus\$} con il nuovo stato.
 
 \subsection{\texttt{getStatus()}}
-Questo metodo recupera lo stato corrente della lampada attraverso una chiamata GET all'endpoint \footnote[1]{Definizione di endpoint : 
-Gli endpoint sono dispositivi fisici che si connettono e scambiano informazioni con una rete di computer. Alcuni esempi di endpoint sono dispositivi mobili, computer desktop, macchine virtuali, dispositivi incorporati e server.} (/lamps/1). \\
+Questo metodo recupera lo stato corrente della lampada attraverso una chiamata GET all'endpoint \footnote{L'endpoint è l'indirizzo della lampada, al quale ci si connette e si scambiano informazioni. In questo caso /lamps/1.} (/lamps/1). \\
 
 \subsection{Al tocco della lampada - \texttt{toggleLamp()}}
 
@@ -42,7 +41,7 @@ Se lo stato è "On", invia una modifica del parametro in "Off" per spegnere la l
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{getlamps.png}
-    \caption{Button fa richiesta di stato iniziale su /Lamps/1}
+    \caption{Button fa richiesta di stato iniziale su /lamps/1}
     \label{fig:getlamps}
 \end{figure}
 
@@ -50,6 +49,6 @@ Se lo stato è "On", invia una modifica del parametro in "Off" per spegnere la l
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{modifylamps.png}
-    \caption{Button fa cambio di stato su /Lamps/1}
+    \caption{Button fa cambio di stato su /lamps/1}
     \label{fig:modifylamps}
 \end{figure}
