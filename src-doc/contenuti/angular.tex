@@ -8,51 +8,47 @@ L'utente ha la capacità di visualizzare lo stato corrente della lampada, sia in
 
 \section{Funzionamento}
 
-\subsection{lamp-button.component.ts}
-Questo componente consiste in un pulsante che cambia lo stato di una lampada. Visualizza inoltre un'immagine della lampada , variabile in base allo stato, e il suo stato corrente scritto in forma testuale.
+\subsection{\texttt{lamp-button.component.ts}}
+Questo componente consiste di un pulsante che cambia lo stato di una lampada. Visualizza inoltre un'immagine della lampada (Figura \ref{fig:getlamps}), variabile in base allo stato, e il suo stato corrente in forma testuale.
 
-\subsection{All'avvio della pagina - OnInit()}
-All'avvio della pagina web,viene chiamato il metodo getStatus().\\
-Il metodo getStatus() è responsabile di ottenere lo stato corrente della lampada tramite una chiamata GET, ed aggiornare il valore locale nel BehaviorSubject lampStatus\$ con il nuovo stato.
+\subsection{All'avvio della pagina - \texttt{ngOnInit()}}
+All'avvio della pagina web, viene invocato il metodo \texttt{getStatus()}.\\
+Il metodo \texttt{getStatus()} è responsabile di ottenere lo stato corrente della lampada tramite una chiamata GET, ed aggiornare il valore locale nel BehaviorSubject \texttt{lampStatus\$} con il nuovo stato.
 
-\subsection{getStatus()}
+\subsection{\texttt{getStatus()}}
 Questo metodo recupera lo stato corrente della lampada attraverso una chiamata GET all'endpoint (/lamps/1). \\
 
-\subsection{Al tocco della lampada - toggleLamp()}
+\subsection{Al tocco della lampada - \texttt{toggleLamp()}}
 
-Si offre il metodo toggleLamp(), tale metodo cambia lo stato della lampada tramite una chiamata PUT , da un valore locale "On" , ad "Off" , e viceversa.
+Si offre il metodo \texttt{toggleLamp()}, tale metodo cambia lo stato della lampada tramite una chiamata PUT, da un valore locale "On", ad "Off", e viceversa.
 
-\section{template HTML}
-Il template HTML mostra un'immagine della lampada e il suo stato corrente. \\
-Tale immagine e' anche un pulsante che chiama il metodo toggleLamp(), quando viene cliccato.
+\section{Template HTML}
+Il template HTML mostra un'immagine della lampada ed il suo stato corrente. \\
+Tale immagine è anche un pulsante che chiama il metodo \texttt{toggleLamp()}, quando viene cliccata o premuta (Figura \ref{fig:modifylamps}).
 
 \section{Metodi di supporto}
 
-\subsection{getData\$()}
-Si offre il metodo getData\$(), il quale effettua una richiesta HTTP GET all'endpoint API per recuperare lo stato corrente della lampada.
+\subsection{\texttt{getData\$()}}
+Si offre il metodo \texttt{getData\$()}, il quale effettua una richiesta HTTP GET all'endpoint API per recuperare lo stato corrente della lampada.
 
-\subsection{toggleLamp\$()}
+\subsection{\texttt{toggleLamp\$()}}
 Questo metodo effettua una richiesta HTTP PUT all'endpoint API per cambiare lo stato della lampada. \\
 Prende un parametro "status" che rappresenta lo stato corrente della lampada. \\
 Se lo stato è "On", invia una modifica del parametro in "Off" per spegnere la lampada, e viceversa.
 
-\section{immagini}
+\section{Immagini}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{getlamps.png}
-    \caption{Button fa richiesta di stato iniziale su /Lamps}
+    \includegraphics[width=0.5\linewidth]{getlamps.png}
+    \caption{Button fa richiesta di stato iniziale su /Lamps/1}
+    \label{fig:getlamps}
 \end{figure}
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{modifylamps.png}
+    \includegraphics[width=0.6\linewidth]{modifylamps.png}
     \caption{Button fa cambio di stato su /Lamps/1}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\linewidth]{modifylamps2.jpg}
-    \caption{Button fa cambio di stato su /Lamps/1}
+    \label{fig:modifylamps}
 \end{figure}
