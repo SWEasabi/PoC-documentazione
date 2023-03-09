@@ -16,7 +16,7 @@ All'avvio della pagina web, viene invocato il metodo \texttt{getStatus()}.\\
 Il metodo \texttt{getStatus()} è responsabile di ottenere lo stato corrente della lampada tramite una chiamata GET, ed aggiornare il valore locale nel BehaviorSubject \texttt{lampStatus\$} con il nuovo stato.
 
 \subsection{\texttt{getStatus()}}
-Questo metodo recupera lo stato corrente della lampada attraverso una chiamata GET all'endpoint \footnote{L'endpoint è l'indirizzo della lampada, al quale ci si connette e si scambiano informazioni. In questo caso /lamps/1.} (/lamps/1). \\
+Questo metodo recupera lo stato corrente della lampada attraverso una chiamata GET all'endpoint \footnote{L'endpoint è l'indirizzo della lampada, al quale ci si connette e si scambiano informazioni. In questo caso /lamps/1.}. \\
 
 \subsection{Al tocco della lampada - \texttt{toggleLamp()}}
 
@@ -29,10 +29,10 @@ Tale immagine è anche un pulsante che chiama il metodo \texttt{toggleLamp()}, q
 \section{Metodi di supporto}
 
 \subsection{\texttt{getData\$()}}
-Si offre il metodo \texttt{getData\$()}, il quale effettua una richiesta HTTP GET all'endpoint API (/lamps/1), per recuperare lo stato corrente della lampada.
+Si offre il metodo \texttt{getData\$()}, il quale effettua una richiesta HTTP GET all'endpoint API, per recuperare lo stato corrente della lampada.
 
 \subsection{\texttt{toggleLamp\$()}}
-Questo metodo effettua una richiesta HTTP PUT all'endpoint API (/lamps/1), per cambiare lo stato della lampada. \\
+Questo metodo effettua una richiesta HTTP PUT all'endpoint API, per cambiare lo stato della lampada. \\
 Prende un parametro "status" che rappresenta lo stato corrente della lampada. \\
 Se lo stato è "On", invia una modifica del parametro in "Off" per spegnere la lampada, e viceversa.
 
