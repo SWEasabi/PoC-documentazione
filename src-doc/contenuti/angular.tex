@@ -8,7 +8,7 @@ L'utente ha la capacità di visualizzare lo stato corrente della lampada, sia in
 
 \section{Funzionamento}
 
-\section{lamp-button.component.ts}
+\subsection{lamp-button.component.ts}
 Questo componente consiste in un pulsante che cambia lo stato di una lampada. Visualizza inoltre un'immagine della lampada , variabile in base allo stato, e il suo stato corrente scritto in forma testuale.
 
 \subsection{All'avvio della pagina - OnInit()}
@@ -26,7 +26,9 @@ Si offre il metodo toggleLamp(), tale metodo cambia lo stato della lampada trami
 Il template HTML mostra un'immagine della lampada e il suo stato corrente. \\
 Tale immagine e' anche un pulsante che chiama il metodo toggleLamp(), quando viene cliccato.
 
-\subsection{Metodi di supporto}
+\section{Metodi di supporto}
+
+\subsection{getData\$()}
 Si offre il metodo getData\$(), il quale effettua una richiesta HTTP GET all'endpoint API per recuperare lo stato corrente della lampada.
 
 \subsection{toggleLamp\$()}
